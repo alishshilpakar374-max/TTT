@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic tac toe</title>
+    <link rel="stylesheet" href="TTT.css" />
+  </head>
+  <body>
+    <div class="heading">
+      <h1>Tic Tac Toe</h1>
+      <h2>Game</h2>
+    </div>
+
+    <div class="choose">
+      <button id="chooseO">O</button>
+      <p id="display-turn">Choose</p>
+      <button id="chooseX">X</button>
+    </div>
+
+    <div class="game-container">
+      <div class="boxes bt bl"></div>
+      <div class="boxes bt"></div>
+      <div class="boxes bt br"></div>
+      <div class="boxes bl"></div>
+      <div class="boxes"></div>
+      <div class="boxes br"></div>
+      <div class="boxes bb bl"></div>
+      <div class="boxes bb"></div>
+      <div class="boxes bb br"></div>
+    </div>
+
+    <button id="butt" onclick="resetGame()">Restart</button>
+    <script src="TTT.js" defer></script>
+  </body>
+</html>

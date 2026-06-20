@@ -1,0 +1,333 @@
+:root {
+  --primary-bg-color: hsl(251, 52%, 10%);
+  --primary-color: hsl(0, 0%, 96%);
+  --secondary-color: hsl(0, 0%, 0%);
+  --btn-bg-color: hsl(186, 100%, 50%);
+  --choose-btn-bg-color: hsl(224, 32%, 20%);
+  --border-color: hsla(186, 100%, 50%, 0.747);
+  --O-bg-color: hsl(358, 98%, 62%);
+  --O-color: hsla(358, 96%, 65%, 0.81);
+  --X-color: hsl(186, 100%, 50%, 0.747);
+  --X-bg-color: hsl(184, 95%, 55%);
+  --p-bg-color: hsl(224, 32%, 20%);
+  --O-anim-color: hsla(358, 96%, 65%, 0.796);
+  --X-anim-color: hsla(186, 100%, 50%, 0.618);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading h1 {
+  background: linear-gradient(
+    to right,
+    var(--X-color),
+    var(--X-color),
+    var(--O-color),
+    var(--O-color)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.choose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem;
+  margin: 0.5rem auto;
+  gap: 4px;
+}
+
+.choose button {
+  height: 42px;
+  width: 42px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  background-color: var(--choose-btn-bg-color);
+  cursor: pointer;
+}
+
+#chooseO {
+  color: var(--O-color);
+}
+
+#chooseX {
+  color: var(--X-color);
+}
+
+.selectedO {
+  border: 2px solid var(--O-color);
+  box-shadow:
+    0 0 4px var(--O-color),
+    0 0 8px var(--O-color);
+}
+
+.selectedX {
+  border: 2px solid var(--X-color);
+  box-shadow:
+    0 0 4px var(--X-color),
+    0 0 8px var(--X-color);
+}
+
+.choose p {
+  height: 42px;
+  width: 100px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--p-bg-color);
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+}
+
+.boxes {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.bl {
+  border-left: none;
+}
+
+.br {
+  border-right: none;
+}
+
+.bt {
+  border-top: none;
+}
+
+.bb {
+  border-bottom: none;
+}
+
+#butt {
+  margin: 1.8rem auto;
+  background-color: var(--primary-bg-color);
+  height: 30px;
+  width: 70px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  color: var(--X-color);
+  position: relative;
+}
+
+/*CSS property fot angles*/
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* sharp border layer */
+#butt::after,
+#butt::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 3px;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from var(--angle),
+    var(--X-anim-color),
+    var(--O-anim-color),
+    var(--O-anim-color),
+    var(--X-anim-color),
+    var(--X-anim-color)
+  );
+  border-radius: 5px;
+  z-index: -1;
+  animation: spin 3s linear infinite;
+}
+
+#butt::before {
+  filter: blur(0.8rem);
+  opacity: 0.8;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+.X {
+  color: var(--X-color);
+  text-shadow:
+    0 0 2px var(--X-color),
+    0 0 4px var(--X-color),
+    0 0 6px var(--X-color);
+}
+
+.X:hover {
+  color: var(--secondary-color);
+  background-color: var(--X-bg-color);
+  box-shadow:
+    0 0 3px var(--X-bg-color),
+    0 0 6px var(--X-bg-color);
+  transform: scale(1.1);
+}
+
+.O {
+  color: var(--O-color);
+  text-shadow:
+    0 0 2px var(--O-color),
+    0 0 4px var(--O-color),
+    0 0 6px var(--O-color);
+}
+
+.O:hover {
+  color: var(--secondary-color);
+  background-color: var(--O-bg-color);
+  text-shadow: 0 0 2px var(--secondary-color);
+  box-shadow:
+    0 0 3px var(--O-bg-color),
+    0 0 6px var(--O-bg-color);
+  transform: scale(1.1);
+}
+
+.x-wins {
+  color: var(--secondary-color);
+  background-color: var(--X-bg-color);
+  box-shadow:
+    0 0 3px var(--X-bg-color),
+    0 0 6px var(--X-bg-color);
+}
+
+.o-wins {
+  color: var(--secondary-color);
+  background-color: var(--O-bg-color);
+  text-shadow: 0 0 2px var(--secondary-color);
+  box-shadow:
+    0 0 3px var(--O-bg-color),
+    0 0 6px var(--O-bg-color);
+}
+
+.span-x {
+  color: var(--X-color);
+}
+
+.span-o {
+  color: var(--O-color);
+}
+
+/* Mobile Phones */
+@media (max-width: 600px) {
+  .heading h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .heading h2 {
+    font-size: 1.3rem;
+  }
+
+  .choose {
+    gap: 8px;
+    margin: 1rem 0;
+  }
+
+  .choose button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .choose p {
+    width: 120px;
+    font-size: 1rem;
+  }
+
+  .game-container {
+    grid-template-columns: repeat(3, 80px);
+  }
+
+  .boxes {
+    width: 80px;
+    height: 80px;
+    font-size: 2.2rem;
+  }
+
+  #butt {
+    width: 100px;
+    height: 40px;
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .heading h1 {
+    font-size: 1.7rem;
+  }
+
+  .heading h2 {
+    font-size: 1.1rem;
+  }
+
+  .game-container {
+    grid-template-columns: repeat(3, 65px);
+  }
+
+  .boxes {
+    width: 65px;
+    height: 65px;
+    font-size: 1.8rem;
+  }
+
+  .choose p {
+    width: 100px;
+    font-size: 0.9rem;
+  }
+}
