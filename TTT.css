@@ -216,7 +216,7 @@ body {
   box-shadow:
     0 0 3px var(--X-bg-color),
     0 0 6px var(--X-bg-color);
-  transform: scale(1.1);
+  
 }
 
 .O {
@@ -234,7 +234,7 @@ body {
   box-shadow:
     0 0 3px var(--O-bg-color),
     0 0 6px var(--O-bg-color);
-  transform: scale(1.1);
+  
 }
 
 .x-wins {
